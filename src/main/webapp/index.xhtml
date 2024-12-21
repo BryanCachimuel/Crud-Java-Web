@@ -1,13 +1,116 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="jakarta.faces.html">
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="primefaces"
+      xmlns:f="jakarta.faces.core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Platillos de Comida Rapida</title>
         <h:outputStylesheet library="webjars" name="primeflex/3.3.1/primeflex.min.css" />
         <h:outputStylesheet library="css" name="layout.css" />
     </h:head>
     <h:body>
-        Hello from Facelets
+
+        <div class="layout-wrapper">
+            <div class="layout-content">
+                <div class="m-4">
+                    <div class="flex justify-content-center flex-wrap">
+                        <h1 class="flex align-items-center justify-content-center font-bold m-2">
+                            Platillos de Comida Rapida
+                        </h1>  
+                    </div>
+
+                    <div class="grid">
+                        <div class="col-12">
+                            <h:form id="form">
+                                <p:growl id="messages" showDetail="true"/> 
+
+                                <p:toolbar>
+                                    <p:toolbarGroup>
+                                        <p:commandButton 
+                                            value="Nuevo" 
+                                            icon="pi pi-plus"
+                                            actionListener="#{platilloMB.nuevo()}"
+                                            update=":dialogs:panel-content" 
+                                            oncomplete="PF('dlgPlatilloRegistro').show()"
+                                            styleClass="ui-button-success" 
+                                            style="margin-right: .5rem">
+                                            <p:resetInput target=":dialogs:panel-content" />
+                                        </p:commandButton>
+                                    </p:toolbarGroup>
+                                </p:toolbar>
+
+                            </h:form>
+
+                            <h:form id="dialogs">
+                                <p:dialog 
+                                    header="Platillo" 
+                                    showEffect="fade" 
+                                    modal="true" 
+                                    widgetVar="dlgPlatilloRegistro"
+                                    responsive="true">
+                                    <p:outputPanel id="panel-content" class="ui-fluid">
+                                        <p:outputPanel rendered="#{not empty platilloMB.platillo}">
+                                            <div class="field">
+                                                <p:outputLabel for="nombre">Nombre Platillo</p:outputLabel>
+                                                <p:inputText 
+                                                    id="nombre" 
+                                                    value="#{platilloMB.platillo.nombre}" 
+                                                    required="true" />
+                                            </div>
+                                            <div class="field">
+                                                <p:outputLabel for="descripcion">Descripcion Platillo</p:outputLabel>
+                                                <p:inputText 
+                                                    id="descripcion" 
+                                                    value="#{platilloMB.platillo.descripcion}" 
+                                                    required="true" />
+                                            </div>
+                                            <div class="field">
+                                                <p:outputLabel for="precio">Precio Platillo</p:outputLabel>
+                                                <p:inputNumber 
+                                                    id="precio" 
+                                                    value="#{platilloMB.platillo.precio}" 
+                                                    required="true" />
+                                            </div>
+                                        </p:outputPanel>
+                                    </p:outputPanel>
+
+                                    <f:facet name="footer">
+                                        <p:commandButton value="Guardar" 
+                                                         icon="pi pi-check" 
+                                                         actionListener="#{platilloMB.guardar()}"
+                                                         update="panel-content" 
+                                                         process="panel-content @this" />
+                                        <p:commandButton value="Cancelar" 
+                                                         icon="pi pi-times" 
+                                                         onclick="PF('dlgPlatilloRegistro').hide()"
+                                                         class="ui-button-secondary"
+                                                         type="button" />
+                                    </f:facet>
+                                </p:dialog>
+
+                                <p:confirmDialog widgetVar="dlgEliminarUsuario" 
+                                                 showEffect="fade" 
+                                                 width="300"
+                                                 message="Eliminar el usuario?" 
+                                                 header="Confirmar" 
+                                                 severity="warn">
+                                    <p:commandButton value="Si
+                                                     " icon="pi pi-check" 
+                                                     actionListener="#{usuarioMB.eliminar()}"
+                                                     process="@this" 
+                                                     oncomplete="PF('dlgEliminarUsuario').hide()" />
+                                    <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
+                                                     onclick="PF('dlgEliminarUsuario').hide()" />
+                                </p:confirmDialog>
+                            </h:form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </h:body>
 </html>
