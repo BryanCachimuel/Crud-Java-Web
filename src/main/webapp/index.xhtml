@@ -40,6 +40,50 @@
                                     </p:toolbarGroup>
                                 </p:toolbar>
 
+                                <p:dataTable id="dt-platillos" 
+                                             widgetVar="dtPlatillos"
+                                             var="platillo" 
+                                             value="#{platilloMB.platillos}"
+                                             reflow="true" 
+                                             styleClass="products-table" 
+                                             paginator="true" 
+                                             rows="10" 
+                                             paginatorPosition="bottom"
+                                             >
+
+                                    <f:facet name="header">
+                                        <div class="products-table-header">
+                                            <span style="font-weight: bold">Platillos</span>
+                                            <span class="filter-container ui-input-icon-left"> <i class="pi pi-search"></i>
+                                                <p:inputText id="globalFilter" onkeyup="PF('dtPlatillos').filter()" placeholder="Search" />
+                                            </span>
+                                        </div>
+                                    </f:facet>
+
+                                    <p:column headerText="Nombre"
+                                              filterBy="#{platillo.nombre}">
+                                        <h:outputText value="#{platillo.nombre}" />
+                                    </p:column>
+                                    <p:column headerText="Descripcion" 
+                                              filterBy="#{platillo.descripcion}">
+                                        <h:outputText value="#{platillo.descripcion}" />
+                                    </p:column>
+                                     <p:column headerText="Precio" 
+                                              filterBy="#{platillo.precio}">
+                                        <h:outputText value="#{platillo.precio}" />
+                                    </p:column>
+                                    <p:column ariaHeaderText="Acciones">
+                                        <p:commandButton icon="pi pi-pencil" 
+                                                         update=":dialogs:panel-content"
+                                                         oncomplete="PF('dlgPlatilloRegistro').show()"
+                                                         styleClass="edit-button rounded-button ui-button-success"
+                                                         process="@this">
+                                            <f:setPropertyActionListener value="#{platillo}" target="#{platilloMB.platillo}" />
+                                            <p:resetInput target="dialogs:panel-content" />
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+
                             </h:form>
 
                             <h:form id="dialogs">
