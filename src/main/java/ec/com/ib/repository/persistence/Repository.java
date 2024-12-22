@@ -1,9 +1,11 @@
 package ec.com.ib.repository.persistence;
 
+import jakarta.ejb.Local;
 import java.util.List;
 
 /* Los T significa que son una clase genérica */
 
+@Local
 public interface Repository<T> {
     
     List<T> findAll();

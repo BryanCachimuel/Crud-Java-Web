@@ -1,8 +1,10 @@
 package ec.com.ib.service;
 
 import ec.com.ib.model.entity.Platillo;
+import jakarta.ejb.Local;
 import java.util.List;
 
+@Local
 public interface IPlatilloService {
     
     List<Platillo> listar();
@@ -11,6 +13,6 @@ public interface IPlatilloService {
     
     Platillo editar(Platillo platillo);
     
-    Platillo eliminar(Platillo platillo);
+    void eliminar(Platillo platillo);
     
 }
