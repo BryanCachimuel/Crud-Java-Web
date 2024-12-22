@@ -3,10 +3,13 @@ package ec.com.ib.service.impl;
 import ec.com.ib.model.entity.Platillo;
 import ec.com.ib.repository.PlatilloRepository;
 import ec.com.ib.service.IPlatilloService;
+import jakarta.ejb.*;
 import java.util.List;
 
+@Stateless
 public class PlatilloServiceImpl implements IPlatilloService{
     
+    @EJB
     private PlatilloRepository platilloRepository;
 
     @Override
