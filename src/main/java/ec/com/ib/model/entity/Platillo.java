@@ -15,7 +15,7 @@ public class Platillo implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_platillo")
-    private Integer IdPlatillos;
+    private Integer IdPlatillo;
     
     @Column(name = "nombre")
     private String nombre;
