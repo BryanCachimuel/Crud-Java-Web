@@ -27,7 +27,8 @@ public class PlatilloController implements Serializable{
        platillo = new Platillo();
    }
    
-   public List<Platillo> obtenerPlatillos(){
+   public List<Platillo> getPlatillos(){
+       //List<Platillo> platillos;
        return platillos = platilloService.listar();
    }
     
