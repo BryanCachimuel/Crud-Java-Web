@@ -15,4 +15,6 @@ public interface IPlatilloService {
     
     void eliminar(Platillo platillo);
     
+    List<Platillo> findAllNombres();
+    
 }
