@@ -4,6 +4,8 @@ import ec.com.ib.model.entity.Platillo;
 import ec.com.ib.repository.persistence.CrudRepository;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
+import java.util.List;
 
 @Stateless
 public class PlatilloRepository extends CrudRepository<Platillo>{
@@ -17,9 +19,11 @@ public class PlatilloRepository extends CrudRepository<Platillo>{
        return em;
     }
     
-    /*
-    public void List<Platillo> findAllNombre(String nombre){
+    
+    public List<Platillo> findAllNombre(){
+        Query query = em.createQuery("SELECT p FROM Platillo p WHERE p.nombre LIKE '%S%'");
+        return query.getResultList();
     }
-    */
+    
     
 }
