@@ -25,5 +25,9 @@ public class PlatilloRepository extends CrudRepository<Platillo>{
         return query.getResultList();
     }
     
+    public List<Platillo> findAllDescripcion(){
+        Query query = em.createQuery("SELECT p FROM Platillo p WHERE p.descripcion LIKE '%C%'");
+        return query.getResultList();
+    }
     
 }
