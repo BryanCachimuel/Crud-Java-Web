@@ -45,4 +45,11 @@ public class PlatilloController implements Serializable{
        PrimeFaces.current().executeScript("PF('dlgPlatilloRegistro').hide()");
        PrimeFaces.current().ajax().update("form:messages","form:dt-platillo");
    }
+   
+   public void eliminar(){
+       platilloService.eliminar(platillo);
+       FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Platillo de Comida Eliminado"));
+       PrimeFaces.current().executeScript("PF('dlgEliminarPlatillo').hide()");
+       PrimeFaces.current().ajax().update("form:messages","form:dt-platillo");
+   }
 }
