@@ -81,6 +81,12 @@
                                             <f:setPropertyActionListener value="#{platillo}" target="#{platilloMB.platillo}" />
                                             <p:resetInput target="dialogs:panel-content" />
                                         </p:commandButton>
+                                         <p:commandButton class="ui-button-warning rounded-button" 
+                                                         icon="pi pi-trash"
+                                                         process="@this"
+                                                         oncomplete="PF('dlgEliminarPlatillo').show()">
+                                             <f:setPropertyActionListener value="#{platillo}" target="#{platilloMB.platillo}" />
+                                        </p:commandButton>
                                     </p:column>
                                 </p:dataTable>
 
@@ -133,19 +139,19 @@
                                     </f:facet>
                                 </p:dialog>
 
-                                <p:confirmDialog widgetVar="dlgEliminarUsuario" 
+                                <p:confirmDialog widgetVar="dlgEliminarPlatillo" 
                                                  showEffect="fade" 
                                                  width="300"
-                                                 message="Eliminar el usuario?" 
+                                                 message="Eliminar el Platillo?" 
                                                  header="Confirmar" 
                                                  severity="warn">
                                     <p:commandButton value="Si
                                                      " icon="pi pi-check" 
-                                                     actionListener="#{usuarioMB.eliminar()}"
+                                                     actionListener="#{platilloMB.eliminar()}"
                                                      process="@this" 
-                                                     oncomplete="PF('dlgEliminarUsuario').hide()" />
+                                                     oncomplete="PF('dlgEliminarPlatillo').hide()" />
                                     <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
-                                                     onclick="PF('dlgEliminarUsuario').hide()" />
+                                                     onclick="PF('dlgEliminarPlatillo').hide()" />
                                 </p:confirmDialog>
                             </h:form>
 
