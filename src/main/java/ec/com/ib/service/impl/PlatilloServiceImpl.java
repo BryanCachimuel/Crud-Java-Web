@@ -31,5 +31,10 @@ public class PlatilloServiceImpl implements IPlatilloService{
     public void eliminar(Platillo platillo) {
         platilloRepository.delete(platillo);
     }
+
+    @Override
+    public List<Platillo> findAllNombres() {
+        return platilloRepository.findAllNombre();
+    }
     
 }
