@@ -10,20 +10,19 @@
         <h:outputStylesheet library="css" name="layout.css" />
     </h:head>
     <h:body>
-
         <div class="layout-wrapper">
             <div class="layout-content layout-content-inner">
                 <div class="m-4">
                     <div class="flex justify-content-center flex-wrap">
                         <h1 class="flex align-items-center justify-content-center font-bold m-2">
                             Platillos de Comida Rapida
-                        </h1>  
+                        </h1>
                     </div>
 
                     <div class="grid">
                         <div class="col-12">
                             <h:form id="form">
-                                <p:growl id="messages" showDetail="true"/> 
+                                <p:growl id="messages" showDetail="true" />
 
                                 <p:toolbar>
                                     <p:toolbarGroup>
@@ -55,21 +54,18 @@
                                         <div class="products-table-header">
                                             <span style="font-weight: bold">Platillos</span>
                                             <span class="filter-container ui-input-icon-left"> <i class="pi pi-search"></i>
-                                                <p:inputText id="globalFilter" onkeyup="PF('dtPlatillos').filter()" placeholder="Search" />
+                                                <p:inputText id="globalFilter" onkeyup="PF('dtPlatillos').filter()" placeholder="Buscar" />
                                             </span>
                                         </div>
                                     </f:facet>
 
-                                    <p:column headerText="Nombre"
-                                              filterBy="#{platillo.nombre}">
+                                    <p:column headerText="Nombre">
                                         <h:outputText value="#{platillo.nombre}" />
                                     </p:column>
-                                    <p:column headerText="Descripcion" 
-                                              filterBy="#{platillo.descripcion}">
+                                    <p:column headerText="Descripcion">
                                         <h:outputText value="#{platillo.descripcion}" />
                                     </p:column>
-                                     <p:column headerText="Precio" 
-                                              filterBy="#{platillo.precio}">
+                                    <p:column headerText="Precio">
                                         <h:outputText value="#{platillo.precio}" />
                                     </p:column>
                                     <p:column ariaHeaderText="Acciones">
@@ -80,12 +76,12 @@
                                                          process="@this">
                                             <f:setPropertyActionListener value="#{platillo}" target="#{platilloMB.platillo}" />
                                             <p:resetInput target="dialogs:panel-content" />
-                                        </p:commandButton>
-                                         <p:commandButton class="ui-button-warning rounded-button" 
+                                        </p:commandButton>&nbsp; &nbsp; &nbsp; 
+                                        <p:commandButton class="ui-button-warning rounded-button" 
                                                          icon="pi pi-trash"
                                                          process="@this"
                                                          oncomplete="PF('dlgEliminarPlatillo').show()">
-                                             <f:setPropertyActionListener value="#{platillo}" target="#{platilloMB.platillo}" />
+                                            <f:setPropertyActionListener value="#{platillo}" target="#{platilloMB.platillo}" />
                                         </p:commandButton>
                                     </p:column>
                                 </p:dataTable>
@@ -102,22 +98,22 @@
                                     <p:outputPanel id="panel-content" class="ui-fluid">
                                         <p:outputPanel rendered="#{not empty platilloMB.platillo}">
                                             <div class="field">
-                                                <p:outputLabel for="nombre">Nombre Platillo</p:outputLabel>
+                                                <p:outputLabel for="nombre">Nombre</p:outputLabel>
                                                 <p:inputText 
                                                     id="nombre" 
                                                     value="#{platilloMB.platillo.nombre}" 
                                                     required="true" />
                                             </div>
                                             <div class="field">
-                                                <p:outputLabel for="descripcion">Descripcion Platillo</p:outputLabel>
+                                                <p:outputLabel for="descripcion">Descripcion</p:outputLabel>
                                                 <p:inputText 
                                                     id="descripcion" 
                                                     value="#{platilloMB.platillo.descripcion}" 
                                                     required="true" />
                                             </div>
                                             <div class="field">
-                                                <p:outputLabel for="precio">Precio Platillo</p:outputLabel>
-                                                <p:inputNumber 
+                                                <p:outputLabel for="precio">Precio</p:outputLabel>
+                                                <p:inputText 
                                                     id="precio" 
                                                     value="#{platilloMB.platillo.precio}" 
                                                     required="true" />
@@ -142,7 +138,7 @@
                                 <p:confirmDialog widgetVar="dlgEliminarPlatillo" 
                                                  showEffect="fade" 
                                                  width="300"
-                                                 message="Eliminar el Platillo?" 
+                                                 message="¿Desea eliminar este platillo?" 
                                                  header="Confirmar" 
                                                  severity="warn">
                                     <p:commandButton value="Si
@@ -154,13 +150,11 @@
                                                      onclick="PF('dlgEliminarPlatillo').hide()" />
                                 </p:confirmDialog>
                             </h:form>
-
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
-
     </h:body>
 </html>
