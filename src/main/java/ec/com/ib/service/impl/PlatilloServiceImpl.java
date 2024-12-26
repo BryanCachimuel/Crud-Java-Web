@@ -41,5 +41,10 @@ public class PlatilloServiceImpl implements IPlatilloService{
     public List<Platillo> findAllDescripciones() {
         return platilloRepository.findAllDescripcion();
     }
+
+    @Override
+    public List<Platillo> findAllPrecios() {
+        return platilloRepository.findAllPrecio();
+    }
     
 }
