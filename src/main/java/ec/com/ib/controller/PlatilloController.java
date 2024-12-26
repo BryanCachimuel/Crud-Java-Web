@@ -12,7 +12,8 @@ import java.util.List;
 import lombok.*;
 import org.primefaces.PrimeFaces;
 
-@Getter @Setter
+@Getter 
+@Setter
 @Named(value = "platilloMB")
 @ViewScoped
 public class PlatilloController implements Serializable{
@@ -28,7 +29,6 @@ public class PlatilloController implements Serializable{
    }
    
    public List<Platillo> getPlatillos(){
-       //List<Platillo> platillos;
        return platillos = platilloService.listar();
    }
     
@@ -43,13 +43,13 @@ public class PlatilloController implements Serializable{
        }
        nuevo();
        PrimeFaces.current().executeScript("PF('dlgPlatilloRegistro').hide()");
-       PrimeFaces.current().ajax().update("form:messages","form:dt-platillo");
+       PrimeFaces.current().ajax().update("form:messages","form:dt-platillos");
    }
    
    public void eliminar(){
        platilloService.eliminar(platillo);
        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Platillo de Comida Eliminado"));
        PrimeFaces.current().executeScript("PF('dlgEliminarPlatillo').hide()");
-       PrimeFaces.current().ajax().update("form:messages","form:dt-platillo");
+       PrimeFaces.current().ajax().update("form:messages","form:dt-platillos");
    }
 }
