@@ -19,4 +19,6 @@ public interface IPlatilloService {
     
     List<Platillo> findAllDescripciones();
     
+    List<Platillo> findAllPrecios();
+    
 }
