@@ -30,4 +30,9 @@ public class PlatilloRepository extends CrudRepository<Platillo>{
         return query.getResultList();
     }
     
+    public List<Platillo> findAllPrecio(){
+        Query query = em.createQuery("SELECT p FROM Platillo p WHERE p.precio < 1 ");
+        return query.getResultList();
+    }
+    
 }
